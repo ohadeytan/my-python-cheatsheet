@@ -41,3 +41,38 @@ mpl.rc('font', size=SMALL_SIZE)
 mpl.rc('axes', titlesize=SMALL_SIZE)
 # and so on...
 ```
+
+## Standalone Legends 
+```python
+from matplotlib.transforms import Bbox
+import numpy as np
+```
+
+### Lines
+```python
+from matplotlib.lines import Line2D
+lines = [ 
+	Line2D([0,1],[0,1], color='black', linestyle='-'),
+	Line2D([0,1],[0,1], color='black', linestyle='--'),
+      ]
+plt.legend(lines, ['One', 'Two'], loc=(-0.0,-0.25), ncol=2)
+bbox = Bbox(np.array([[0.7,-0.45],[2.6,-0.06]]))
+plt.savefig(f'graphics/legend-lines.png', dpi=300, bbox_inches=bbox)
+plt.clf()
+```
+![Lines Legend](graphics/legend-lines.png)
+
+### Patches
+```python
+import matplotlib.patches as mpatches
+patches = [ 
+	mpatches.Patch(label="One", color='red'),
+	mpatches.Patch(label="Two", color='blue'), 
+      ]
+plt.legend(handles=patches, loc=(-0.0,-0.25), ncol=3)
+bbox = Bbox(np.array([[0.7,-0.45],[2.6,-0.06]]))
+plt.savefig(f'graphics/legend-patches.png', dpi=300, bbox_inches=bbox)
+plt.clf()
+```
+![Lines Legend](graphics/legend-patches.png)
+
