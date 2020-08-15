@@ -45,8 +45,28 @@ def standalone_legends_lines():
     plt.savefig(f'graphics/legend-lines.png', dpi=300, bbox_inches=bbox)
     plt.clf()
 
+def zoom_on_plot():
+    from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
+    fig, ax = plt.subplots()
+    x, y1, y2 = range(10), range(10), [x**2 for x in range(10)]
+    plt.plot(x, y1)
+    plt.plot(x, y2)
+    # Zoom Plots
+    axins = zoomed_inset_axes(ax, zoom=3, loc=2) 
+    axins.plot(x, y1)
+    axins.plot(x, y2)
+    # Zoom Limits
+    axins.set_xlim(x[1], x[3])
+    axins.set_ylim(y1[1]-1, y2[3]+1)
+    plt.xticks(visible=False)
+    plt.yticks(visible=False)
+    # Corner Lines
+    mark_inset(ax, axins, loc1=3, loc2=4, fc="none", ec="0.5")
+    plt.savefig(f'graphics/zoom-on-plot.png', dpi=300)
+    plt.clf()
+
 def main():
-    pass
+    zoom_on_plot()
 
 if __name__ == "__main__":
     main()
