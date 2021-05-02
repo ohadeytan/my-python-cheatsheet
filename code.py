@@ -5,6 +5,11 @@ def Dict_with_default_values():
     d = defaultdict(list)
     d['key'].append(1) # d['key'] == [1]
 
+def rewrite_file(src, dest):
+    with open(src, 'r') as s, open(dest, 'w') as d:
+        for line in s:
+            d.write(line) # manipulate here
+
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
@@ -66,7 +71,7 @@ def zoom_on_plot():
     plt.clf()
 
 def main():
-    zoom_on_plot()
+    pass
 
 if __name__ == "__main__":
     main()

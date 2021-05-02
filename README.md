@@ -18,6 +18,14 @@ d = defaultdict(list)
 d['key'].append(1) # d['key'] == [1]
 ```
 
+### Rewrite file
+```python
+def rewrite_file(src, dest):
+    with open(src, 'r') as s, open(dest, 'w') as d:
+        for line in s:
+            d.write(line) # manipulate here
+```
+
 # Matplotlib
 
 ```python
